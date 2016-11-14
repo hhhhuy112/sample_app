@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
  
 
+  
+
   get 'users/new'
 
  root 'static_pages#home'
@@ -11,10 +13,15 @@ Rails.application.routes.draw do
 
   get  'contact'=>'static_pages#contact'
 
-   get 'signup'  => 'users#new'
-
-    resources :users
-
+  get 'signup'  => 'users#new'
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
+  
+  resources :users
+  # Force all access to the app over SSL, use Strict-Transport-Security,
+  # and use secure cookies.
+ # config.force_ssl = true
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
